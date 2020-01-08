@@ -1,0 +1,33 @@
+<div class="container task justify-content-center mt-3 pt-3 border border-dark rounded">
+    <div class="task-name d-flex justify-content-around">
+        <!-- task name -->
+        <mat-form-field class="col-6"><input matInput placeholder="Task Name"></mat-form-field>
+        <!-- datePicker -->
+        <mat-form-field>
+            <input matInput [matDatepicker]="dp3" placeholder="Date" disabled>
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+
+    </div>
+    <!-- description -->
+    <div class="task-desc col-12">
+        <mat-form-field class="col-12">
+            <textarea matInput placeholder="Task Description" style="min-height: 50px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, fugiat voluptate provident pariatur laboriosam libero hic fugit ipsa temporibus ullam, voluptatem molestias omnis ipsum dolorem amet, tempore dolor alias! Quas?</textarea>
+        </mat-form-field>
+    </div>
+    <div class="task-status container justify-content-center d-flex text-center pt-2 pb-2">
+        <div class="left-side-task-status col-4">
+            <!-- <span class="text-uppercase align-content-center">main list</span> -->
+            <button mat-raised-button>Move</button>
+        </div>
+        <div class="middle-side-task-status col-4">
+            <!-- <span class="text-uppercase align-content-center">main list</span> -->
+            <button mat-raised-button>Delete</button>
+        </div>
+        <div class="right-side-task-status col-4">
+            <button mat-raised-button>Done</button>
+        </div>
+    </div>
+</div>
