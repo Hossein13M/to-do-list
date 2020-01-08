@@ -1,5 +1,7 @@
+import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 // angular material components are the bellow
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
@@ -45,19 +47,20 @@ import { ListItemComponent } from './components/list-item/list-item.component';
     
   ],
   imports: [
+    HttpModule,
     MatSliderModule,
     MatInputModule,    
     MatSelectModule,
     MatButtonModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MDBBootstrapModule
-    
+    MDBBootstrapModule    
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]

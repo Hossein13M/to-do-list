@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+
 
 @Component({
   selector: 'app-list-item',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListItemComponent implements OnInit {
 
-  constructor() { }
+  lists:any[];
+
+  constructor(http: Http) { 
+    http.get('http://localhost:4000/api/lists').subscribe(response => {
+    console.log(response.json())  
+    this.lists = response.json()
+    })
+  }
 
   ngOnInit() {
   }
