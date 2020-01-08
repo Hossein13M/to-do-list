@@ -7,12 +7,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {  
-  MatMenuModule,
-  MatCheckboxModule,
-  MatIconModule,  
-  MatNativeDateModule
-} from '@angular/material';
+import { MatNativeDateModule } from '@angular/material';
+// mdb angular 
+import { NavbarModule, WavesModule } from 'angular-bootstrap-md'
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 
 
 
@@ -27,6 +26,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ListsPageComponent } from './pages/lists-page/lists-page.component';
 import { ListNameComponent } from './components/list-name/list-name.component';
 import { TaskComponent } from './components/task/task.component';
+import { CreateListComponent } from './components/create-list/create-list.component';
+import { ListItemComponent } from './components/list-item/list-item.component';
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { TaskComponent } from './components/task/task.component';
     ListsPageComponent,
     ListNameComponent,
     TaskComponent,
+    CreateListComponent,
+    ListItemComponent,
     
   ],
   imports: [
@@ -52,7 +55,8 @@ import { TaskComponent } from './components/task/task.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MDBBootstrapModule
     
   ],
   providers: [MatDatepickerModule],

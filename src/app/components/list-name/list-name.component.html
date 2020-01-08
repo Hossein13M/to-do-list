@@ -1,11 +1,19 @@
-<div class="list-name container justify-content-center d-flex text-center pt-2 pb-2">
-    <div class="left-side-list-name col-6 text-center">
-        <!-- <span class="text-uppercase align-content-center">main list</span> -->
-        <button mat-raised-button>Create A New Task</button>
-    </div>
-    <div class="right-side-list-name d-flex justify-content-center col-6 text-center">
-        <a routerLink="/lists">
-            <button mat-raised-button>Show Lists</button>
-        </a>
-    </div>
+<!--Navbar-->
+<div class="list-name container pl-0 pr-0">
+    <mdb-navbar class="pr-0 pl-0" SideClass="container navbar navbar-1 navbar-light amber lighten-2 col-12" [containerInside]="false">
+        <mdb-navbar-brand><a class="navbar-brand" routerLink="/">To-Do Application</a></mdb-navbar-brand>
+        <links>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-dark" routerLink="/" mdbWavesEffect>Main List<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-dark" routerLink="/lists" mdbWavesEffect>Lists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-dark" routerLink="/lists" mdbWavesEffect>Done Tasks</a>
+                </li>
+            </ul>
+        </links>
+    </mdb-navbar>
 </div>
