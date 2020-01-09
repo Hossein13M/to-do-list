@@ -26,26 +26,22 @@ export class ListItemComponent implements OnInit {
 
   // create a new list
 
-  createList(listName, listDate){
-    let onCreateList = {
-      title: listName,
-      date: listDate,
-      isMain: false
-    }
-    console.log(listName);
-    console.log(listDate);
-    console.log(onCreateList);
-    this.http.post('http://localhost:4000/api/lists',
-      {
-        title: listName,
-        date:listDate,
+  createList(listName: HTMLInputElement){
+    if (listName.value.length !== 0) {
+      let onCreateList = {
+        title: listName.value,      
         isMain: false
-      },      
-    )    
-    // JSON.stringify(onCreateList)).subscribe(response => {
-    //   this.lists.push(this.lists)
-    // }    
-    // this.http.put('http://localhost:4000/api/lists' + '/' + (Math.random() * (10 - 5) + 5), {onCreateList})
+      }
+      listName.value = ''
+      console.log(onCreateList);
+      this.http.post('http://localhost:4000/api/lists', onCreateList)
+      .subscribe(response => {
+        this.lists.push(onCreateList);
+        console.log(response.json());
+        console.log(onCreateList);
+      })
+      
+    }    
   }
 
   ngOnInit() {
