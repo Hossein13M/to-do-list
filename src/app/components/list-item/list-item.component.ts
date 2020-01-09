@@ -26,10 +26,11 @@ export class ListItemComponent implements OnInit {
 
   // create a new list
 
-  createList(listName: HTMLInputElement){
+  createList(listName: HTMLInputElement, listDate: HTMLInputElement){
     if (listName.value.length !== 0) {
       let onCreateList = {
-        title: listName.value,      
+        title: listName.value,   
+        date: listDate.value,   
         isMain: false
       }
       listName.value = ''
