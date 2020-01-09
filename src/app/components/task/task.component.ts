@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-task',
@@ -7,17 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  name:string;
-  
+  lists:any[];
+  tasks:any[];
 
-  constructor() { 
-    
-    
-  }
-
-  test(name){
-    console.log(name)
-  }
+  constructor(private http: Http) {     
+    http.get('http://localhost:4000/api/lists').subscribe(response => {
+    console.log(response.json())  
+    this.lists = response.json()
+  })
+  http.get('http://localhost:4000/api/tasks').subscribe(response =>{
+    console.log(response.json())
+    this.tasks = response.json()
+  })
+}
 
   ngOnInit() {
   }
