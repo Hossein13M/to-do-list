@@ -1,7 +1,7 @@
 <!-- new task -->
 <div class=" task justify-content-center mt-3 pb-1 pt-1 ">
     <ul class="list-group">
-        <li class="list-group-item" style="background-color: #d0d8de;">
+        <li class="list-group-item">
             <div class="task-name">
                 <mat-form-field class="col-6"><input matInput placeholder="List Name" #listName required></mat-form-field>
                 <mat-form-field class="col-6">
@@ -17,11 +17,12 @@
 <!-- tasks -->
 <div class=" task justify-content-center mt-3 pb-1 pt-1 ">
     <ul class="list-group">
-        <li *ngFor="let list of lists" class="list-group-item" style="background-color: #d0d8de;">
+        <li *ngFor="let list of lists" class="list-group-item">
             <div class="task-name">
                 <mat-form-field class="col-6"><input matInput placeholder="List Name" [(ngModel)]="list.title" [disabled]="list.isMain"></mat-form-field>
                 <mat-form-field class="col-6">
-                    <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [value]="list.date">
+                    <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [(ngModel)]="list.date">
+                    <!-- previous:  [value]="list.date" -->
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false"></mat-datepicker>
                 </mat-form-field>
