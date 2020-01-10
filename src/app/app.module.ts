@@ -30,6 +30,8 @@ import { ListNameComponent } from './components/list-name/list-name.component';
 import { TaskComponent } from './components/task/task.component';
 import { CreateListComponent } from './components/create-list/create-list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
+import { DoneTasksComponent } from './pages/done-tasks/done-tasks.component';
+import { DoneTaskItemsComponent } from './components/done-task-items/done-task-items.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { ListItemComponent } from './components/list-item/list-item.component';
     TaskComponent,
     CreateListComponent,
     ListItemComponent,
+    DoneTasksComponent,
+    DoneTaskItemsComponent,
     
   ],
   imports: [
