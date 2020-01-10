@@ -1,4 +1,4 @@
-<!-- new task -->
+<!-- create a new list -->
 <div class=" task justify-content-center mt-3 pb-1 pt-1 ">
     <ul class="list-group">
         <li class="list-group-item">
@@ -14,7 +14,7 @@
         </li>
     </ul>
 </div>
-<!-- tasks -->
+<!-- existing lists -->
 <div class=" task justify-content-center mt-3 pb-1 pt-1 ">
     <ul class="list-group">
         <li *ngFor="let list of lists" class="list-group-item">
@@ -29,7 +29,7 @@
             </div>
             <div class="task-status container justify-content-center d-flex text-center pt-2 pb-2">
                 <div class="left-side-task-status col-4">
-                    <button mat-raised-button routerLink="/"> Tasks</button>
+                    <button mat-raised-button [routerLink]="[list._id]"> Tasks</button>
                 </div>
                 <div class="middle-side-task-status col-4">
                     <button mat-raised-button [disabled]="list.isMain">Update</button>
