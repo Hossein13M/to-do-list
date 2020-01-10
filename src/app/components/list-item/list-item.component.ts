@@ -41,8 +41,13 @@ export class ListItemComponent implements OnInit {
         console.log(response.json());
         console.log(onCreateList);
       })
-      
     }    
+  }
+
+  deleteList(listObject){
+    this.http.delete('http://localhost:4000/api/lists' + "/" + listObject._id).subscribe(response =>{
+      console.log(response.json())
+    })
   }
 
   ngOnInit() {
