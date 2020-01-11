@@ -2,6 +2,8 @@ import { FormsModule } from '@angular/forms'
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 // angular material components are the bellow
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,22 +20,24 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 // these are my own components and pages
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageCardComponent } from './components/page-card/page-card.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ListsPageComponent } from './pages/lists-page/lists-page.component';
-import { ListNameComponent } from './components/list-name/list-name.component';
 import { TaskComponent } from './components/task/task.component';
 import { CreateListComponent } from './components/create-list/create-list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { DoneTasksComponent } from './pages/done-tasks/done-tasks.component';
 import { DoneTaskItemsComponent } from './components/done-task-items/done-task-items.component';
 import { ListTasksComponent } from './pages/list-tasks/list-tasks.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CreateTaskComponent } from './components/create-task/create-task.component';
+
+// the bellow are the services
 import { TasksService } from './services/tasks.service';
+import { ListsService } from './services/lists.service';
 
 
 @NgModule({
@@ -44,13 +48,14 @@ import { TasksService } from './services/tasks.service';
     PageCardComponent,
     MainPageComponent,
     ListsPageComponent,
-    ListNameComponent,
     TaskComponent,
     CreateListComponent,
     ListItemComponent,
     DoneTasksComponent,
     DoneTaskItemsComponent,
     ListTasksComponent,
+    NavbarComponent,
+    CreateTaskComponent,
     
   ],
   imports: [
@@ -69,7 +74,7 @@ import { TasksService } from './services/tasks.service';
     MatNativeDateModule,
     MDBBootstrapModule    
   ],
-  providers: [MatDatepickerModule, TasksService],
+  providers: [MatDatepickerModule, TasksService, ListsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

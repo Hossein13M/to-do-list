@@ -3,4 +3,3 @@ export interface List {
     date: Date,
     isMain: Boolean
 }
-

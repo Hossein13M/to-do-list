@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ListsService} from '../../services/lists.service'
 
 @Component({
   selector: 'app-create-list',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private listService: ListsService) {}
+
+  createNewList(listName: HTMLInputElement, listDate: HTMLInputElement){
+    if (listName.value.length !== 0){
+      // listName.value = ''
+      this.listService.createList(listName.value, listDate.value)
+      listName.value = ''
+      // TODO: now I need to get the whole lists again
+
+    }
+  }
 
   ngOnInit() {
   }

@@ -2,24 +2,37 @@ import { Injectable } from '@angular/core';
 import { Task } from '../dto/task';
 import { Http } from '@angular/http';
 
-@Injectable({ providedIn: 'root' }) 
+@Injectable({}) 
 
 export class TasksService {
+  
+  // this service is designed for all the action that we want to do with tasks
 
   tasks: Task[]
   compeletedTasks: Task[]
-  some:any
+  dailyTasks: Task[]
+  
   constructor(private http: Http) { }
 
   getCompeletedTasks(){
     return this.http.get("http://localhost:4000/api/compeleted");
     // return this.http.get("http://localhost:4000/api/compeleted").subscribe(response =>{
-    // console.log(response.json())
     // this.compeletedTasks = response.json()
     // return response.json()
-    // console.log(this.compeletedTasks)
-    // return this.compeletedTasks
-  }}
+  }
+
+  deleteTask(taskObject){
+    this.http.delete("http://localhost:4000/api/tasks" + "/" + taskObject._id).subscribe(response => {
+    })
+    return this.getCompeletedTasks()
+  }
+
+  // getting the main list's task (daily tasks)
+  getDailyTasks(){
+    return this.http.get("http://localhost:4000/api/mainList")
+
+  }
+}
   
   
 

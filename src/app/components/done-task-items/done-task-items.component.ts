@@ -11,29 +11,23 @@ import { Task } from '../../dto/task';
 })
 export class DoneTaskItemsComponent implements OnInit {
 
-  constructor(private tasksService:TasksService){
-  }
+  constructor(private tasksService:TasksService){}
 
   doneTasks: Task[]
 
   ngOnInit() {
+    // here I am getting all the compeleted tasks from service and store them in "doneTasks" to indicate them
+    // on the template
     this.tasksService.getCompeletedTasks().subscribe(response => {
-      this.doneTasks = response.json();
-      console.log(this.doneTasks)
-      for (let index = 0; index < this.doneTasks.length; index++) {
-        console.log(this.doneTasks[index].title)        
-      }
- });
-
-    
+      this.doneTasks = response.json()
+    });    
   }
-    // something : this.tasksService.getCompeletedTasks()
-    // let com = this.tasksService.compeletedTasks
-    // console.log(com)
 
-    // console.log(this.tasksService.getCompeletedTasks())
-    // console.log(this.tasksService.getCompeletedTasks())
-    // console.log(this.tasksService.compeletedTasks)
+  deleteTask(task){
+    console.log(task)
+    this.tasksService.deleteTask(task)
+  }
+   
 }
 
 
