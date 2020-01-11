@@ -15,6 +15,7 @@ export class CreateListComponent implements OnInit {
       // listName.value = ''
       this.listService.createList(listName.value, listDate.value)
       listName.value = ''
+      this.listService.getLists()
       // TODO: now I need to get the whole lists again
 
     }

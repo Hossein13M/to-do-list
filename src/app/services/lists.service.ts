@@ -13,15 +13,23 @@ export class ListsService {
   constructor(private http: Http) {}
 
   getLists(){
-    return this.http.get("http://localhost:4000/api/lists");
+    return this.http.get("http://localhost:4000/api/lists")
   }
 
   // creating a new list
 
   createList(listNameSer, listDateSer){
       return this.http.post('http://localhost:4000/api/lists', {title: listNameSer, date: listDateSer, isMain:false})
-      .subscribe(response => {
-        console.log(response.json());
-      })
+      .subscribe(response => {})
+  }
+
+
+  // deleting an exisiting list
+
+  deleteList(listObject){
+    this.http.delete('http://localhost:4000/api/lists' + "/" + listObject._id).subscribe(response =>{
+      console.log(response.json())
+    })
+    this.getLists()
   }
 }
