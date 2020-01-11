@@ -1,9 +1,9 @@
 <div class="container task justify-content-center mt-3 pt-3 bgcolor">
     <ul class="list-group ">
-        <li *ngFor="let task of tasks " class="list-group-item">
+        <li *ngFor="let task of doneTasks" class="list-group-item">
             <div class="task-name d-flex justify-content-around ">
                 <!-- task name -->
-                <mat-form-field class="col-4 "><input matInput placeholder="Task " disabled [(ngModel)]="task.title "></mat-form-field>
+                <mat-form-field class="col-4 "><input matInput placeholder="Task" disabled [(ngModel)]="task.title "></mat-form-field>
                 <!-- list name -->
                 <!-- <mat-form-field class="col-4 "><input matInput placeholder="List "></mat-form-field> -->
                 <!-- TODO: -->

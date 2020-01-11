@@ -33,6 +33,7 @@ import { ListItemComponent } from './components/list-item/list-item.component';
 import { DoneTasksComponent } from './pages/done-tasks/done-tasks.component';
 import { DoneTaskItemsComponent } from './components/done-task-items/done-task-items.component';
 import { ListTasksComponent } from './pages/list-tasks/list-tasks.component';
+import { TasksService } from './services/tasks.service';
 
 
 @NgModule({
@@ -68,7 +69,7 @@ import { ListTasksComponent } from './pages/list-tasks/list-tasks.component';
     MatNativeDateModule,
     MDBBootstrapModule    
   ],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
