@@ -38,6 +38,7 @@ import { CreateTaskComponent } from './components/create-task/create-task.compon
 // the bellow are the services
 import { TasksService } from './services/tasks.service';
 import { ListsService } from './services/lists.service';
+import { DailyTasksComponent } from './components/daily-tasks/daily-tasks.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { ListsService } from './services/lists.service';
     ListTasksComponent,
     NavbarComponent,
     CreateTaskComponent,
+    DailyTasksComponent,
     
   ],
   imports: [

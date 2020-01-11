@@ -3,7 +3,7 @@ import { Task } from '../dto/task';
 import { Http } from '@angular/http';
 import { List } from '../dto/list';
 
-@Injectable({})
+@Injectable({ providedIn: 'root' })
 export class ListsService {
 
   lists: List[]
@@ -11,6 +11,8 @@ export class ListsService {
   onCreateList: List[]
 
   constructor(private http: Http) {}
+
+  // getting all lists
 
   getLists(){
     return this.http.get("http://localhost:4000/api/lists")
@@ -22,7 +24,6 @@ export class ListsService {
       return this.http.post('http://localhost:4000/api/lists', {title: listNameSer, date: listDateSer, isMain:false})
       .subscribe(response => {})
   }
-
 
   // deleting an exisiting list
 

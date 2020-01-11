@@ -1,5 +1,6 @@
 export interface List {
-    title: String,
-    date: Date,
-    isMain: Boolean
+  _id: string;
+  title: String,
+  date: Date,
+  isMain: Boolean
 }
