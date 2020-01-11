@@ -8,14 +8,18 @@ import { Http } from '@angular/http';
 })
 export class TaskComponent implements OnInit {
 
-  lists:any[];
-  tasks:any[];
+  lists:any[]
+  mainList:any[]
+  tasks:any[]
   tasksUrl: "http://localhost:4000/api/tasks"
 
   constructor(private http: Http) {     
     http.get('http://localhost:4000/api/lists').subscribe(response => {
     console.log(response.json())  
     this.lists = response.json()
+    for (let index = 0; index < this.lists.length; index++) {
+      this.lists[index]._id      
+    }
   })
   http.get("http://localhost:4000/api/tasks").subscribe(response =>{
     console.log(response.json())

@@ -9,24 +9,26 @@ import { List } from 'src/app/dto/list';
 })
 export class ListItemComponent implements OnInit { 
 
-  
   // instancing lists with interface
   lists : List[];
+  mainRoute = false
 
   constructor(private listService: ListsService) {}
 
-  deleteListItem(listObject){
-    this.listService.deleteList(listObject)
+  getListItems(callback = null){
     this.listService.getLists().subscribe(response => {
       this.lists = response.json()
-    }); 
+      if(callback) callback()
+    });
+  }
+
+  deleteListItem(listObject){
+    this.listService.deleteList(listObject).subscribe(response => {
+      this.getListItems()
+    });
   }
 
   ngOnInit() {
-    this.listService.getLists()
-    this.listService.getLists().subscribe(response => {
-      this.lists = response.json()
-    }); 
+    this.getListItems()
   }
-
 }

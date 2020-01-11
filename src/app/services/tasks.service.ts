@@ -12,6 +12,7 @@ export class TasksService {
   compeletedTasks: Task[]
   dailyTasks: Task[]
   
+  
   constructor(private http: Http) { }
 
   getCompeletedTasks(){
@@ -27,37 +28,15 @@ export class TasksService {
     // return this.getCompeletedTasks()
   }
 
-  // getting the main list's task (daily tasks)
-  getDailyTasks(){
+  // getting all of tasks
+  getTasks(){
     return this.http.get("http://localhost:4000/api/tasks")
   }
 
-
-  // creating a new task
-
-  // createTask(taskName: HTMLInputElement, taskDate: HTMLInputElement, taskDesc: HTMLInputElement, taskListId){
-  //   if (taskName.value.length !== 0) {
-  //     console.log(this.lists)
-  
-  //     let onCreateTask = {
-  //       title: taskName.value,
-  //       description: taskDesc.value,
-  //       done: false,
-  //       date: taskDate.value,
-  //       list: taskListId
-  //     }
-  //     taskName.value = ''
-  //     taskDate.value = ''
-  //     taskDesc.value = ''
-  //     // console.log(onCreateTask);
-  //     this.http.post("http://localhost:4000/api/tasks", onCreateTask)
-  //     .subscribe(response => {
-  //       this.tasks.push(onCreateTask);
-  //       console.log(response.json());
-  //       console.log(onCreateTask);
-  //     })
-  //   }    
-  // }
+  // getting the mainList
+  getMainList(){
+    return this.http.get("http://localhost:4000/api/mainList")
+  }
 
   createTask(taskNameSer, taskDescSer, taskDateSer, taskListIdSer){
     return this.http.post('http://localhost:4000/api/tasks', 

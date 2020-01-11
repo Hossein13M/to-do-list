@@ -28,9 +28,6 @@ export class ListsService {
   // deleting an exisiting list
 
   deleteList(listObject){
-    this.http.delete('http://localhost:4000/api/lists' + "/" + listObject._id).subscribe(response =>{
-      console.log(response.json())
-    })
-    this.getLists()
+    return this.http.delete('http://localhost:4000/api/lists/' + listObject._id)
   }
 }
