@@ -4,7 +4,7 @@ import { Task } from "../../dto/task";
 import { ListsService } from "../../services/lists.service";
 import { List } from "../../dto/list";
 import { ActivatedRoute } from "@angular/router";
-import { promise } from 'protractor';
+import { promise } from "protractor";
 
 @Component({
   selector: "app-tasks-list",
@@ -40,28 +40,32 @@ export class TasksListComponent implements OnInit {
     this.tasksService.getTasks().subscribe(response => {
       this.allTasks = response.json();
       for (let index = 0; index < this.allTasks.length; index++) {
-        if ((this.allTasks[index].list == this.listUrlTitle._id))
+        if (this.allTasks[index].list == this.listUrlTitle._id)
           this.currentListTasks.push(this.allTasks[index]);
-        }
+      }
       // this.getListData();
     });
   }
 
-  doneTask(task){
-    this.tasksService.compeleteTask(task)
-    this.currentListTasks.splice(task, 1)
+  doneTask(task) {
+    this.tasksService.compeleteTask(task);
+    this.currentListTasks.splice(task, 1);
   }
 
-
   // move a task to main list
-  movingTask(movedTask){
+  movingTask(movedTask) {
     for (let index = 0; index < this.allLists.length; index++) {
-      if(this.allLists[index].isMain == true)
-        var mainListId = this.allLists[index]._id      
+      if (this.allLists[index].isMain == true)
+        var mainListId = this.allLists[index]._id;
     }
-    this.tasksService.moveTask(movedTask, mainListId)
-    this.currentListTasks.splice(movedTask, 1)
+    this.tasksService.moveTask(movedTask, mainListId);
+    this.currentListTasks.splice(movedTask, 1);
+  }
 
+  // updating a task
+  updateTask(task) {
+    console.log(task);
+    this.tasksService.updateTaskDetails(task).subscribe(respone => {});
   }
 
   // delete a task from this list

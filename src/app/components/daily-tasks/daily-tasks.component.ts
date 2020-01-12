@@ -19,12 +19,19 @@ export class DailyTasksComponent implements OnInit {
   public mainList: List
   mainListTasks: Task[] = new Array() 
 
+  // deleting a task
   deleteTask(task){
     this.tasksService.deleteTask(task).subscribe(response =>{
       let deletedObject = response.json()
       let deletedObjectIndex = this.mainListTasks.indexOf(deletedObject)
       this.mainListTasks.splice(deletedObjectIndex, 1)
     })
+  }
+
+  // updating a task
+  updateTask(task){
+    console.log(task)
+    this.tasksService.updateTaskDetails(task).subscribe(respone => {})
   }
 
   // getting tasks

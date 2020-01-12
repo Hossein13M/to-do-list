@@ -24,7 +24,7 @@ export class TasksService {
 
   deleteTask(taskObject){
     return this.http.delete("http://localhost:4000/api/tasks/" + taskObject._id)
-    .subscribe(response => {})
+    // .subscribe(response => {})
     // return this.getCompeletedTasks()
   }
 
@@ -58,6 +58,19 @@ export class TasksService {
       date: movedTask.date,
       list:mainListId
     }).subscribe(response => {})
+  }
+
+  // update title, desc and date of a task
+  updateTaskDetails(updatedTask){
+    return this.http.put("http://localhost:4000/api/tasks/" + updatedTask._id, {
+      title: updatedTask.title,
+      description: updatedTask.description,
+      done: false,
+      date: updatedTask.date,
+      list:updatedTask.list
+    })
+    // .subscribe(response => {})
+
   }
 
 
