@@ -35,12 +35,18 @@ export class DailyTasksComponent implements OnInit {
       this.tasksService.getTasks().subscribe(res2 =>{
         this.allTasks = res2.json()
         for (let index = 0; index < this.allTasks.length; index++) {
-          if (this.allTasks[index].list == this.mainList._id && !(this.mainListTasks.includes(this.allTasks[index])))
+          if (this.allTasks[index].list == this.mainList._id && this.allTasks[index].done != true  && !(this.mainListTasks.includes(this.allTasks[index])))
             this.mainListTasks.push(this.allTasks[index])          
         }
       })
     })
     if(callback) callback()
+  }
+
+  doneTask(task){
+    this.tasksService.compeleteTask(task)
+    this.mainListTasks.splice(task, 1)
+
   }
   
 

@@ -23,7 +23,7 @@ export class TasksService {
   }
 
   deleteTask(taskObject){
-    return this.http.delete("http://localhost:4000/api/tasks" + "/" + taskObject._id)
+    return this.http.delete("http://localhost:4000/api/tasks/" + taskObject._id)
     // .subscribe(response => {})
     // return this.getCompeletedTasks()
   }
@@ -38,6 +38,19 @@ export class TasksService {
     return this.http.get("http://localhost:4000/api/mainList")
   }
 
+  // done task (compelete a task)
+  compeleteTask(compeletedTask){
+    return this.http.put("http://localhost:4000/api/tasks/" + compeletedTask._id, {
+      title: compeletedTask.title,
+      description: compeletedTask.description,
+      done: true,
+      date: compeletedTask.date,
+      list:compeletedTask.list
+    }).subscribe(response => {})
+  }
+
+
+  // creating a new task
   createTask(taskNameSer, taskDescSer, taskDateSer, taskListIdSer){
     return this.http.post('http://localhost:4000/api/tasks', 
     {
