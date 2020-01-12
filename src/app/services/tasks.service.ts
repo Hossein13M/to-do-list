@@ -24,7 +24,7 @@ export class TasksService {
 
   deleteTask(taskObject){
     return this.http.delete("http://localhost:4000/api/tasks/" + taskObject._id)
-    // .subscribe(response => {})
+    .subscribe(response => {})
     // return this.getCompeletedTasks()
   }
 

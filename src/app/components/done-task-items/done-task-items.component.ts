@@ -24,8 +24,8 @@ export class DoneTaskItemsComponent implements OnInit {
   }
 
   deleteTask(task){
-    console.log(task)
     this.tasksService.deleteTask(task)
+    this.doneTasks.splice(task, 1)
   }
    
 }
