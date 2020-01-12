@@ -3,23 +3,16 @@
         <li *ngFor="let task of currentListTasks" class="list-group-item">
             <div class="task-name d-flex justify-content-around ">
                 <!-- task name -->
-                <mat-form-field class="col-4 "><input matInput placeholder="Task" [(ngModel)]="task.title"></mat-form-field>
+                <mat-form-field class="col-5 "><input matInput placeholder="Task" [(ngModel)]="task.title"></mat-form-field>
                 <!-- list name -->
-                <mat-form-field class="col-4"><input matInput placeholder="List" [(ngModel)]="task.list"></mat-form-field>
-                <!-- TODO: -->
-                <!-- <mat-form-field>
-                    <mat-label></mat-label>
-                    <mat-select [(value)]="selected ">
-                        <mat-option *ngFor="let list of lists " value="option1 ">{{ list.title }}</mat-option>
-                    </mat-select>
-                </mat-form-field> -->
-                <!-- TODO: -->
+                <!-- <mat-form-field class="col-4"><input matInput placeholder="List" [(ngModel)]="task.list"></mat-form-field> -->
                 <!-- datePicker -->
-                <mat-form-field class="col-4 ">
+                <mat-form-field class="col-5 ">
                     <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [value]="task.date ">
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false" class="media-date"></mat-datepicker>
                 </mat-form-field>
+                <button class="my-auto done-btn" mat-mini-fab><i class="fas fa-check"></i></button>
             </div>
             <!-- description -->
             <div class="task-desc col-12 ">
