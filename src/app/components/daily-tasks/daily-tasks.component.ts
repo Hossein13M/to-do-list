@@ -31,6 +31,7 @@ export class DailyTasksComponent implements OnInit {
     });
   }
 
+  // again here we are getting the list's id
   listIdFinder(listObject) {
     this.selectedListItem = this.allLists.find(
       something => something._id == listObject._id
@@ -64,7 +65,6 @@ export class DailyTasksComponent implements OnInit {
 
   // updating a task
   updateTask(task) {
-    console.log(task);
     this.tasksService.updateTaskDetails(task).subscribe(respone => {});
   }
 
@@ -104,6 +104,7 @@ export class DailyTasksComponent implements OnInit {
     return arr;
   }
 
+  // make a task done (compelete the task)
   doneTask(task) {
     this.tasksService.compeleteTask(task).subscribe(response => {
       this.removeObjectFromArray(this.mainListTasks, "_id", task._id);

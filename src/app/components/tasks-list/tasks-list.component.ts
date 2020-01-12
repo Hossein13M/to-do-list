@@ -26,12 +26,14 @@ export class TasksListComponent implements OnInit {
   listUrlTitle: List;
   private selectedListItem: List;
 
+  // finding a list's id
   listIdFinder(listObject) {
     this.selectedListItem = this.allLists.find(
       something => something._id == listObject._id
     );
   }
 
+  // getting the list name using the id which have been fixed by route
   getListUrlTitle(listId: string) {
     this.listsService.getLists().subscribe(response => {
       this.allLists = response.json();
@@ -43,6 +45,7 @@ export class TasksListComponent implements OnInit {
     });
   }
 
+  // getting all the tasks of the list
   getListData() {
     this.tasksService.getTasks().subscribe(response => {
       this.allTasks = response.json();
@@ -76,7 +79,7 @@ export class TasksListComponent implements OnInit {
         taskName.value = "";
         taskDate.value = null;
         taskDesc.value = "";
-        listOfSelection.value = null
+        listOfSelection.value = null;
       });
   }
 
@@ -99,7 +102,6 @@ export class TasksListComponent implements OnInit {
   // compelete a task
   doneTaskOf(task) {
     this.tasksService.compeleteTask(task).subscribe(response => {
-      console.log(response.json());
       this.removeObjectFromArray(this.currentListTasks, "_id", task._id);
     });
   }
@@ -116,7 +118,6 @@ export class TasksListComponent implements OnInit {
 
   // updating a task
   updateTask(task) {
-    console.log(task);
     this.tasksService.updateTaskDetails(task).subscribe(respone => {});
   }
 

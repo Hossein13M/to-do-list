@@ -9,7 +9,6 @@ import { List } from 'src/app/dto/list';
 })
 export class ListItemComponent implements OnInit { 
 
-  // instancing lists with interface
   lists : List[];
   mainRoute = false
 
@@ -31,9 +30,6 @@ export class ListItemComponent implements OnInit {
         this.getListItems()
         listName.value = ''
       })
-
-      // TODO: now I need to get the whole lists again
-
     }
   }
 
@@ -42,6 +38,7 @@ export class ListItemComponent implements OnInit {
     this.listService.updateListDetails(list).subscribe(respone => {})
   }
 
+  // deleting a task from the list
   deleteListItem(listObject){
     this.listService.deleteList(listObject).subscribe(response => {
       this.getListItems()

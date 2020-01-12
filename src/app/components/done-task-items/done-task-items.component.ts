@@ -23,6 +23,7 @@ export class DoneTaskItemsComponent implements OnInit {
     });    
   }
 
+  // deleting a compeleted task
   deleteTask(task){
     this.tasksService.deleteTask(task).subscribe(response => {
       this.doneTasks.splice(task, 1)
