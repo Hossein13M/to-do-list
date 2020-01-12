@@ -22,6 +22,11 @@ export class ListItemComponent implements OnInit {
     });
   }
 
+  // update list details
+  updateList(list){
+    this.listService.updateListDetails(list).subscribe(respone => {})
+  }
+
   deleteListItem(listObject){
     this.listService.deleteList(listObject).subscribe(response => {
       this.getListItems()

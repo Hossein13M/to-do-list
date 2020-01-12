@@ -25,6 +25,7 @@ export class CreateTaskComponent implements OnInit {
 
   createNewTask(taskName: HTMLInputElement, taskDate: HTMLInputElement, taskDesc: HTMLInputElement){
     this.tasksService.createTask(taskName.value, taskDate.value, taskDesc.value, this.selectedListItem._id)
+    .subscribe(response => {})
     console.log(this.selectedListItem._id)
   }  
 

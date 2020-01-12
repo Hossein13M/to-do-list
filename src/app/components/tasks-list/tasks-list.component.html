@@ -20,18 +20,16 @@
                     <textarea matInput placeholder="Task Description" class="descHeight" [(ngModel)]="task.description"></textarea>
                 </mat-form-field>
             </div>
-            <div class="task-status container justify-content-center d-flex text-center pt-2 pb-2 ">
-                <div class="left-side-task-status col-4 ">
-                    <!-- <span class="text-uppercase align-content-center ">main list</span> -->
-                    <button (click)="updateTask(task)" mat-raised-button>Update</button>
-                </div>
-                <div class="right-side-task-status col-4 ">
-                    <button (click)="movingTask(task)" mat-raised-button>Move</button>
-                </div>
-                <div class="middle-side-task-status col-4 ">
-                    <!-- <span class="text-uppercase align-content-center ">main list</span> -->
-                    <button mat-raised-button color="warn" (click)="deleteTask(task)">Delete</button>
-                </div>
+            <div class="task-status justify-content-between d-flex text-center pt-2 pb-2 ">
+                <button class="col-1 px-0" (click)="updateTask(task)" mat-raised-button>
+                    <i class="far fa-edit"></i>
+                </button>
+                <button class="col-1 px-0" (click)="movingTask(task)" mat-raised-button>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="col-1 px-0" mat-raised-button color="warn" (click)="deleteTask(task)">
+                    <i class="far fa-trash-alt"></i>
+                </button>
             </div>
         </li>
     </ul>

@@ -25,6 +25,18 @@ export class ListsService {
       // .subscribe(response => {})
   }
 
+  // updating a list
+  updateListDetails(updatedList){
+    return this.http.put("http://localhost:4000/api/lists/" + updatedList._id, {
+      _id:updatedList._id,
+      title: updatedList.title,
+      isMain: false,
+      date: updatedList.date,
+    })
+    // .subscribe(response => {})
+
+  }
+
   // deleting an exisiting list
 
   deleteList(listObject){
