@@ -22,6 +22,21 @@ export class ListItemComponent implements OnInit {
     });
   }
 
+
+  // 
+  createNewList(listName: HTMLInputElement, listDate: HTMLInputElement){
+    if (listName.value.length !== 0 && listName.value.toLowerCase() !== "Daily Tasks".toLowerCase()){
+      this.listService.createList(listName.value, listDate.value).subscribe(resposne => {
+        this.lists.push(resposne.json())
+        this.getListItems()
+        listName.value = ''
+      })
+
+      // TODO: now I need to get the whole lists again
+
+    }
+  }
+
   // update list details
   updateList(list){
     this.listService.updateListDetails(list).subscribe(respone => {})

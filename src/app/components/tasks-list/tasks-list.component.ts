@@ -24,6 +24,12 @@ export class TasksListComponent implements OnInit {
   allTasks: Task[];
   allLists: List[];
   listUrlTitle: List;
+  private selectedListItem : List
+
+
+  listIdFinder(listObject){
+    this.selectedListItem = this.allLists.find(something => something._id == listObject._id)
+  }
 
   getListUrlTitle(listId: string) {
     this.listsService.getLists().subscribe(response => {
@@ -46,6 +52,15 @@ export class TasksListComponent implements OnInit {
       // this.getListData();
     });
   }
+
+  // create a new task
+  createNewTask(taskName: HTMLInputElement, taskDate: HTMLInputElement, taskDesc: HTMLInputElement){
+    this.tasksService.createTask(taskName.value, taskDate.value, taskDesc.value, this.selectedListItem._id)
+    .subscribe(response => {
+      if ((response.json()).list == (this.listUrlTitle)._id)
+        this.currentListTasks.push(response.json())
+    })
+  } 
 
   doneTask(task) {
     this.tasksService.compeleteTask(task);
@@ -81,5 +96,13 @@ export class TasksListComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.getListUrlTitle((params as any).listId);
     });
+    // I want to get all the lists
+    this.listsService.getLists().subscribe(response => {
+      this.allLists = response.json()
+    })
+    // i want to get all the tasks
+    this.tasksService.getTasks().subscribe(response => {
+      this.allTasks = response.json()
+    })
   }
 }

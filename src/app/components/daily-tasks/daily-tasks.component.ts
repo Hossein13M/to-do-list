@@ -15,6 +15,7 @@ export class DailyTasksComponent implements OnInit {
 
   listItemsDailyPage: List[]
   allTasks: Task[]
+  allLists:List[]
   private selectedListItem : List
   public mainList: List
   mainListTasks: Task[] = new Array() 
@@ -25,6 +26,20 @@ export class DailyTasksComponent implements OnInit {
       let deletedObject = response.json()
       let deletedObjectIndex = this.mainListTasks.indexOf(deletedObject)
       this.mainListTasks.splice(deletedObjectIndex, 1)
+    })
+  }
+
+  listIdFinder(listObject){
+    this.selectedListItem = this.allLists.find(something => something._id == listObject._id)
+  }
+
+
+  // creating a new task
+  createNewTask(taskName: HTMLInputElement, taskDate: HTMLInputElement, taskDesc: HTMLInputElement){
+    this.tasksService.createTask(taskName.value, taskDate.value, taskDesc.value, this.selectedListItem._id)
+    .subscribe(response => {
+      if ((response.json()).list == (this.mainList)._id)
+        this.mainListTasks.push(response.json())
     })
   }
 
@@ -58,9 +73,11 @@ export class DailyTasksComponent implements OnInit {
   ngOnInit() {
     // I want to get all the lists
     this.listsService.getLists().subscribe(response => {
-      // console.log(response.json())
       this.listItemsDailyPage = response.json()
-      // console.log(this.listItemsDailyPage)
+    })
+
+    this.listsService.getLists().subscribe(response => {
+      this.allLists = response.json()
     })
 
     // getting all the tasks and filter them to just have the main list tasks  
