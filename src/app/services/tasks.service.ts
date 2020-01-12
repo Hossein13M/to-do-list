@@ -46,7 +46,7 @@ export class TasksService {
       done: true,
       date: compeletedTask.date,
       list:compeletedTask.list
-    }).subscribe(response => {})
+    })
   }
 
   // move a task to main list

@@ -6,7 +6,7 @@
         <!-- list name -->
         <mat-form-field class="col-5">
             <mat-label>List</mat-label>
-            <mat-select [(value)]="selected" (selectionChange)="listIdFinder($event.value)">
+            <mat-select [(value)]="selected" #listOfSelection (selectionChange)="listIdFinder($event.value)">
                 <mat-option *ngFor="let list of allLists" [value]="list">{{ list.title }}</mat-option>
             </mat-select>
         </mat-form-field>
@@ -24,7 +24,7 @@
         </mat-form-field>
     </div>
     <div class="task-status container justify-content-center d-flex text-center pt-2 pb-2 ">
-        <button class="col-4 mb-2 " mat-raised-button (click)="createNewTask(taskTitle, taskDesc, taskDate)">Create</button>
+        <button class="col-4 mb-2 " mat-raised-button (click)="createNewTask(taskTitle, taskDesc, taskDate, listOfSelection)">Create</button>
     </div>
 </div>
 <!-- tasks of list -->
@@ -42,7 +42,7 @@
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false" class="media-date"></mat-datepicker>
                 </mat-form-field>
-                <button class="my-auto done-btn" (click)="doneTask(task)" mat-mini-fab><i class="fas fa-check"></i></button>
+                <button class="my-auto done-btn" (click)="doneTaskOf(task)" mat-mini-fab><i class="fas fa-check"></i></button>
             </div>
             <!-- description -->
             <div class="task-desc col-12 ">

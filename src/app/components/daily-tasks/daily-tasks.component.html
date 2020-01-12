@@ -2,17 +2,18 @@
 <div class="container task justify-content-center mt-3 pt-3 list-group-item">
     <div class="task-name d-flex justify-content-around">
         <!-- task name -->
-        <mat-form-field class="col-4"><input matInput placeholder="Task" #taskTitle required></mat-form-field>
+        <mat-form-field class="col-4"><input matInput placeholder="Task" #taskTitle required /></mat-form-field>
         <!-- list name -->
         <mat-form-field class="col-5">
             <mat-label>List</mat-label>
-            <mat-select [(value)]="selected" (selectionChange)="listIdFinder($event.value)">
-                <mat-option *ngFor="let list of allLists" [value]="list">{{ list.title }}</mat-option>
+            <mat-select [(value)]="selected" #listOfSelection (selectionChange)="listIdFinder($event.value)">
+                <mat-option *ngFor="let list of allLists" [value]="list">{{ list.title }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
         <!-- datePicker -->
         <mat-form-field class="col-2">
-            <input matInput [matDatepicker]="dp3" placeholder="Date" disabled #taskDate>
+            <input matInput [matDatepicker]="dp3" placeholder="Date" disabled #taskDate />
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
             <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
@@ -24,7 +25,9 @@
         </mat-form-field>
     </div>
     <div class="task-status container justify-content-center d-flex text-center pt-2 pb-2 ">
-        <button class="col-4 mb-2 " mat-raised-button (click)="createNewTask(taskTitle, taskDesc, taskDate)">Create</button>
+        <button class="col-4 mb-2 " mat-raised-button (click)="createNewTask(taskTitle, taskDesc, taskDate, listOfSelection)">
+      Create
+    </button>
     </div>
 </div>
 <!-- tasks -->
@@ -33,17 +36,19 @@
         <li *ngFor="let task of mainListTasks" class="list-group-item">
             <div class="task-name d-flex justify-content-around pt-3 px-2">
                 <!-- task name -->
-                <mat-form-field class="col-7"><input matInput placeholder="Task" [(ngModel)]="task.title"></mat-form-field>
+                <mat-form-field class="col-7"><input matInput placeholder="Task" [(ngModel)]="task.title" /></mat-form-field>
                 <!-- list name -->
                 <!-- <mat-form-field class="col-4"><input matInput placeholder="List" [(ngModel)]="task.list"></mat-form-field> -->
                 <!-- datePicker -->
                 <mat-form-field class="col-2">
-                    <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [(ngModel)]="task.date" [value]="task.date ">
+                    <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [(ngModel)]="task.date" [value]="task.date" />
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false" class="media-date"></mat-datepicker>
                 </mat-form-field>
                 <!-- the bellow is for done task -->
-                <button class="my-auto done-btn" (click)="doneTask(task)" mat-mini-fab><i class="fas fa-check"></i></button>
+                <button class="my-auto done-btn" (click)="doneTask(task)" mat-mini-fab>
+          <i class="fas fa-check"></i>
+        </button>
             </div>
             <!-- description -->
             <div class="task-desc col-12 ">
@@ -51,13 +56,13 @@
                     <textarea matInput placeholder="Task Description" class="descHeight" [(ngModel)]="task.description"></textarea>
                 </mat-form-field>
             </div>
-            <div class="task-status container justify-content-around d-flex text-center pt-2 pb-2">
+            <div class="task-status container justify-content-between d-flex text-center pt-2 pb-2">
                 <button (click)="updateTask(task)" mat-raised-button>
-                    <i class="far fa-edit"></i>
-                </button>
+          <i class="far fa-edit"></i>
+        </button>
                 <button mat-raised-button color="warn" (click)="deleteTask(task)">
-                    <i class="far fa-trash-alt"></i>
-                </button>
+          <i class="far fa-trash-alt"></i>
+        </button>
             </div>
         </li>
     </ul>

@@ -26,14 +26,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageCardComponent } from './components/page-card/page-card.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ListsPageComponent } from './pages/lists-page/lists-page.component';
-import { TaskComponent } from './components/task/task.component';
-import { CreateListComponent } from './components/create-list/create-list.component';
 import { ListItemComponent } from './components/list-item/list-item.component';
 import { DoneTasksComponent } from './pages/done-tasks/done-tasks.component';
 import { DoneTaskItemsComponent } from './components/done-task-items/done-task-items.component';
 import { ListTasksComponent } from './pages/list-tasks/list-tasks.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CreateTaskComponent } from './components/create-task/create-task.component';
 
 // the bellow are the services
 import { TasksService } from './services/tasks.service';
@@ -50,14 +47,11 @@ import { TasksListComponent } from './components/tasks-list/tasks-list.component
     PageCardComponent,
     MainPageComponent,
     ListsPageComponent,
-    TaskComponent,
-    CreateListComponent,
     ListItemComponent,
     DoneTasksComponent,
     DoneTaskItemsComponent,
     ListTasksComponent,
     NavbarComponent,
-    CreateTaskComponent,
     DailyTasksComponent,
     TasksListComponent,
     

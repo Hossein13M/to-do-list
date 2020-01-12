@@ -22,7 +22,6 @@
                 <mat-form-field class="col-6"><input matInput placeholder="List Name" [(ngModel)]="list.title" [disabled]="list.isMain"></mat-form-field>
                 <mat-form-field class="col-6">
                     <input matInput [matDatepicker]="dp3" placeholder="Date" disabled [(ngModel)]="list.date">
-                    <!-- previous:  [value]="list.date" -->
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false"></mat-datepicker>
                 </mat-form-field>

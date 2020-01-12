@@ -24,11 +24,12 @@ export class TasksListComponent implements OnInit {
   allTasks: Task[];
   allLists: List[];
   listUrlTitle: List;
-  private selectedListItem : List
+  private selectedListItem: List;
 
-
-  listIdFinder(listObject){
-    this.selectedListItem = this.allLists.find(something => something._id == listObject._id)
+  listIdFinder(listObject) {
+    this.selectedListItem = this.allLists.find(
+      something => something._id == listObject._id
+    );
   }
 
   getListUrlTitle(listId: string) {
@@ -46,25 +47,61 @@ export class TasksListComponent implements OnInit {
     this.tasksService.getTasks().subscribe(response => {
       this.allTasks = response.json();
       for (let index = 0; index < this.allTasks.length; index++) {
-        if (this.allTasks[index].list == this.listUrlTitle._id)
+        if (
+          this.allTasks[index].list == this.listUrlTitle._id &&
+          this.allTasks[index].done != true
+        )
           this.currentListTasks.push(this.allTasks[index]);
       }
-      // this.getListData();
     });
   }
 
   // create a new task
-  createNewTask(taskName: HTMLInputElement, taskDate: HTMLInputElement, taskDesc: HTMLInputElement){
-    this.tasksService.createTask(taskName.value, taskDate.value, taskDesc.value, this.selectedListItem._id)
-    .subscribe(response => {
-      if ((response.json()).list == (this.listUrlTitle)._id)
-        this.currentListTasks.push(response.json())
-    })
-  } 
+  createNewTask(
+    taskName: HTMLInputElement,
+    taskDate: HTMLInputElement,
+    taskDesc: HTMLInputElement,
+    listOfSelection: HTMLInputElement
+  ) {
+    this.tasksService
+      .createTask(
+        taskName.value,
+        taskDate.value,
+        taskDesc.value || Date.now(),
+        this.selectedListItem._id
+      )
+      .subscribe(response => {
+        if (response.json().list == this.listUrlTitle._id)
+          this.currentListTasks.push(response.json());
+        taskName.value = "";
+        taskDate.value = null;
+        taskDesc.value = "";
+        listOfSelection.value = null
+      });
+  }
 
-  doneTask(task) {
-    this.tasksService.compeleteTask(task);
-    this.currentListTasks.splice(task, 1);
+  // remove an object from array with its id
+  removeObjectFromArray(arr, attr, value) {
+    var i = arr.length;
+    while (i--) {
+      if (
+        arr[i] &&
+        arr[i].hasOwnProperty(attr) &&
+        arguments.length > 2 &&
+        arr[i][attr] === value
+      ) {
+        arr.splice(i, 1);
+      }
+    }
+    return arr;
+  }
+
+  // compelete a task
+  doneTaskOf(task) {
+    this.tasksService.compeleteTask(task).subscribe(response => {
+      console.log(response.json());
+      this.removeObjectFromArray(this.currentListTasks, "_id", task._id);
+    });
   }
 
   // move a task to main list
@@ -88,7 +125,7 @@ export class TasksListComponent implements OnInit {
     this.tasksService.deleteTask(task).subscribe(response => {
       let deletedObject = response.json();
       let deletedObjectIndex = this.currentListTasks.indexOf(deletedObject);
-      this.currentListTasks.splice(deletedObjectIndex, 1);
+      this.removeObjectFromArray(this.currentListTasks, "_id", task._id);
     });
   }
 
@@ -98,11 +135,11 @@ export class TasksListComponent implements OnInit {
     });
     // I want to get all the lists
     this.listsService.getLists().subscribe(response => {
-      this.allLists = response.json()
-    })
+      this.allLists = response.json();
+    });
     // i want to get all the tasks
     this.tasksService.getTasks().subscribe(response => {
-      this.allTasks = response.json()
-    })
+      this.allTasks = response.json();
+    });
   }
 }
