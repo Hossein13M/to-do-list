@@ -1,6 +1,6 @@
 <div class="container task justify-content-center mt-3 pt-3 bgcolor">
     <ul class="list-group ">
-        <li *ngFor="let task of mainListTasks" class="list-group-item">
+        <li *ngFor="let task of currentListTasks" class="list-group-item">
             <div class="task-name d-flex justify-content-around ">
                 <!-- task name -->
                 <mat-form-field class="col-4 "><input matInput placeholder="Task" [(ngModel)]="task.title"></mat-form-field>

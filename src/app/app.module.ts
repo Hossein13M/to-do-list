@@ -39,6 +39,7 @@ import { CreateTaskComponent } from './components/create-task/create-task.compon
 import { TasksService } from './services/tasks.service';
 import { ListsService } from './services/lists.service';
 import { DailyTasksComponent } from './components/daily-tasks/daily-tasks.component';
+import { TasksListComponent } from './components/tasks-list/tasks-list.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { DailyTasksComponent } from './components/daily-tasks/daily-tasks.compon
     NavbarComponent,
     CreateTaskComponent,
     DailyTasksComponent,
+    TasksListComponent,
     
   ],
   imports: [

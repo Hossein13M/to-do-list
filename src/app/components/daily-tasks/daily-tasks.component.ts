@@ -56,22 +56,7 @@ export class DailyTasksComponent implements OnInit {
       // console.log(this.listItemsDailyPage)
     })
 
-
+    // getting all the tasks and filter them to just have the main list tasks  
     this.getDailyTasks()
-
-    // get the mainList
-    // this.tasksService.getMainList().subscribe(response =>{
-    //   this.mainList = response.json()
-
-    // // getting only the daily tasks items
-    // this.tasksService.getTasks().subscribe(res2 =>{
-    //   this.allTasks = res2.json()
-    //   for (let index = 0; index < this.allTasks.length; index++) {
-    //     if (this.allTasks[index].list == this.mainList._id) {
-    //       this.mainListTasks.push(this.allTasks[index])          
-    //     }
-    //   }
-    // })
-    // })
   }
 }
