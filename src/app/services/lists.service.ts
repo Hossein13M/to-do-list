@@ -22,7 +22,7 @@ export class ListsService {
 
   createList(listNameSer, listDateSer){
       return this.http.post('http://localhost:4000/api/lists', {title: listNameSer, date: listDateSer, isMain:false})
-      .subscribe(response => {})
+      // .subscribe(response => {})
   }
 
   // deleting an exisiting list

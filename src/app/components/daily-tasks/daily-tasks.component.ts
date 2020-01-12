@@ -22,6 +22,30 @@ export class DailyTasksComponent implements OnInit {
   listIdFinder(listObject){
     // this.selectedListItem = this.allLists.find(something => something._id == listObject._id)
   }
+
+  deleteTask(task){
+    this.tasksService.deleteTask(task).subscribe(response =>{
+      let deletedObject = response.json()
+      let deletedObjectIndex = this.mainListTasks.indexOf(deletedObject)
+      this.mainListTasks.splice(deletedObjectIndex, 1)
+    })
+  }
+
+  // getting tasks
+  getDailyTasks(callback = null){
+    this.tasksService.getMainList().subscribe(response =>{
+      this.mainList = response.json()
+    // getting only the daily tasks items
+      this.tasksService.getTasks().subscribe(res2 =>{
+        this.allTasks = res2.json()
+        for (let index = 0; index < this.allTasks.length; index++) {
+          if (this.allTasks[index].list == this.mainList._id && !(this.mainListTasks.includes(this.allTasks[index])))
+            this.mainListTasks.push(this.allTasks[index])          
+        }
+      })
+    })
+    if(callback) callback()
+  }
   
 
   ngOnInit() {
@@ -32,19 +56,22 @@ export class DailyTasksComponent implements OnInit {
       // console.log(this.listItemsDailyPage)
     })
 
-    // get the mainList
-    this.tasksService.getMainList().subscribe(response =>{
-      this.mainList = response.json()
 
-    // getting only the daily tasks items
-    this.tasksService.getTasks().subscribe(res2 =>{
-      this.allTasks = res2.json()
-      for (let index = 0; index < this.allTasks.length; index++) {
-        if (this.allTasks[index].list == this.mainList._id) {
-          this.mainListTasks.push(this.allTasks[index])          
-        }
-      }
-    })
-    })
+    this.getDailyTasks()
+
+    // get the mainList
+    // this.tasksService.getMainList().subscribe(response =>{
+    //   this.mainList = response.json()
+
+    // // getting only the daily tasks items
+    // this.tasksService.getTasks().subscribe(res2 =>{
+    //   this.allTasks = res2.json()
+    //   for (let index = 0; index < this.allTasks.length; index++) {
+    //     if (this.allTasks[index].list == this.mainList._id) {
+    //       this.mainListTasks.push(this.allTasks[index])          
+    //     }
+    //   }
+    // })
+    // })
   }
 }
