@@ -46,9 +46,7 @@ export class DailyTasksComponent implements OnInit {
   doneTask(task){
     this.tasksService.compeleteTask(task)
     this.mainListTasks.splice(task, 1)
-
   }
-  
 
   ngOnInit() {
     // I want to get all the lists

@@ -47,6 +47,23 @@ export class TasksListComponent implements OnInit {
     });
   }
 
+  doneTask(task){
+    this.tasksService.compeleteTask(task)
+    this.currentListTasks.splice(task, 1)
+  }
+
+
+  // move a task to main list
+  movingTask(movedTask){
+    for (let index = 0; index < this.allLists.length; index++) {
+      if(this.allLists[index].isMain == true)
+        var mainListId = this.allLists[index]._id      
+    }
+    this.tasksService.moveTask(movedTask, mainListId)
+    this.currentListTasks.splice(movedTask, 1)
+
+  }
+
   // delete a task from this list
   deleteTask(task) {
     this.tasksService.deleteTask(task).subscribe(response => {

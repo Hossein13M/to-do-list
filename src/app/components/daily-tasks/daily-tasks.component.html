@@ -21,9 +21,9 @@
                     <textarea matInput placeholder="Task Description" class="descHeight" [(ngModel)]="task.description"></textarea>
                 </mat-form-field>
             </div>
-            <div class="task-status container justify-content-between d-flex text-center pt-2 pb-2">
+            <div class="task-status container justify-content-around d-flex text-center pt-2 pb-2">
                 <button class="task-btn" mat-raised-button>Update</button>
-                <button class="task-btn" mat-raised-button>Move</button>
+                <!-- <button class="task-btn" mat-raised-button>Move</button> -->
                 <button class="task-btn" mat-raised-button color="warn" (click)="deleteTask(task)">Delete</button>
             </div>
         </li>

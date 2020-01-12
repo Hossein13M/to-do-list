@@ -49,6 +49,17 @@ export class TasksService {
     }).subscribe(response => {})
   }
 
+  // move a task to main list
+  moveTask(movedTask, mainListId){
+    return this.http.put("http://localhost:4000/api/tasks/" + movedTask._id, {
+      title: movedTask.title,
+      description: movedTask.description,
+      done: false,
+      date: movedTask.date,
+      list:mainListId
+    }).subscribe(response => {})
+  }
+
 
   // creating a new task
   createTask(taskNameSer, taskDescSer, taskDateSer, taskListIdSer){

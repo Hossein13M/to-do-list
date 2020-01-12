@@ -12,7 +12,7 @@
                     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
                     <mat-datepicker #dp3 disabled="false" class="media-date"></mat-datepicker>
                 </mat-form-field>
-                <button class="my-auto done-btn" mat-mini-fab><i class="fas fa-check"></i></button>
+                <button class="my-auto done-btn" (click)="doneTask(task)" mat-mini-fab><i class="fas fa-check"></i></button>
             </div>
             <!-- description -->
             <div class="task-desc col-12 ">
@@ -26,7 +26,7 @@
                     <button mat-raised-button>Update</button>
                 </div>
                 <div class="right-side-task-status col-4 ">
-                    <button mat-raised-button>Move</button>
+                    <button (click)="movingTask(task)" mat-raised-button>Move</button>
                 </div>
                 <div class="middle-side-task-status col-4 ">
                     <!-- <span class="text-uppercase align-content-center ">main list</span> -->
