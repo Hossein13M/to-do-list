@@ -19,10 +19,6 @@ export class DailyTasksComponent implements OnInit {
   public mainList: List
   mainListTasks: Task[] = new Array() 
 
-  listIdFinder(listObject){
-    // this.selectedListItem = this.allLists.find(something => something._id == listObject._id)
-  }
-
   deleteTask(task){
     this.tasksService.deleteTask(task).subscribe(response =>{
       let deletedObject = response.json()
