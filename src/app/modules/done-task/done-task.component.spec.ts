@@ -1,24 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { DoneTaskComponent } from './done-task.component';
+import { DoneTaskModule } from './done-task.module';
 
 describe('DoneTaskComponent', () => {
-    let component: DoneTaskComponent;
-    let fixture: ComponentFixture<DoneTaskComponent>;
-
     beforeEach(async () => {
         await TestBed.configureTestingModule({
+            imports: [DoneTaskModule],
             declarations: [DoneTaskComponent],
         }).compileComponents();
     });
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(DoneTaskComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
-
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    it('should create the app', () => {
+        const fixture: ComponentFixture<DoneTaskComponent> = TestBed.createComponent(DoneTaskComponent);
+        const app = fixture.componentInstance;
+        expect(app).toBeTruthy();
     });
 });
