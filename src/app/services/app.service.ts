@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { List } from '../models/list.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AppService {
     constructor(private readonly http: HttpClient) {}
 
