@@ -8,6 +8,7 @@ import { AppService } from '../../services/app.service';
 })
 export class DoneTaskComponent implements OnInit {
     public completedTasks: Array<any> = [];
+
     constructor(@Host() @Optional() private readonly appService: AppService) {}
 
     ngOnInit(): void {
