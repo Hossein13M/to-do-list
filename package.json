@@ -23,7 +23,6 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "angular-bootstrap-md": "^8.8.1",
-    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
@@ -47,6 +46,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
+    "prettier": "^2.5.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
