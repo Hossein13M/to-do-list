@@ -4,6 +4,8 @@ export interface Task {
     done: boolean;
     date: Date;
     list: TaskList;
+    _id: string;
+    __v: string;
 }
 
 export interface TaskList {
