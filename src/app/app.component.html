@@ -1,8 +1,17 @@
 <div class="h-screen flex justify-center item-center">
     <mat-card class="my-auto w-3/4 h-3/4 mat-elevation-z8">
-        <mat-card-header class="text-center flex justify-center border-b-2 mb-2">
-            <mat-card-title>ToDo Application</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        <mat-card-header class="text-center flex flex-col justify-center border-b-2 mb-2">
+            <mat-card-title class="flex-1">ToDo Application</mat-card-title>
+            <mat-card-subtitle class="my-2 flex flex-1 justify-around">
+                <button mat-stroked-button color="accent" routerLink="/done-tasks">
+                    <span>Done Tasks</span>
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button mat-stroked-button color="accent" routerLink="/lists">
+                  <span>Lists</span>
+                  <mat-icon>list</mat-icon>
+                </button>
+            </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <router-outlet></router-outlet>
