@@ -1,0 +1,26 @@
+.mat-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-card-header {
+    //flex-shrink: 0;
+}
+
+.mat-card-content {
+    flex-grow: 1;
+    overflow: auto;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    a {
+        display: flex;
+        align-items: center;
+        margin: 0 20px;
+    }
+    img {
+        height: 50px;
+    }
+}
