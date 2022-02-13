@@ -8,12 +8,17 @@ import { Interceptor } from './interceptor';
 import { AppService } from './services/app.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { NotificationService } from './services/notification.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NameDialogModule } from './components/name-dialog/name-dialog.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatCardModule],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, MatCardModule, MatSnackBarModule, NameDialogModule, MatDialogModule],
     providers: [
         AppService,
+        NotificationService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: Interceptor,

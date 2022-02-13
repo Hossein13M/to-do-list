@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { List } from '../models/list.model';
+import { Task } from '../models/task.model';
 
 @Injectable()
 export class AppService {
@@ -27,7 +28,7 @@ export class AppService {
         return this.http.delete<any>(`/tasks/${taskId}`);
     }
 
-    public updateTaskById(taskId: number, task: Task): Observable<any> {
+    public updateTaskById(taskId: string, task: Task): Observable<any> {
         return this.http.put<any>(`/tasks/${taskId}`, task);
     }
 
@@ -40,19 +41,19 @@ export class AppService {
         return this.http.get<any>(`/mainList`);
     }
 
-    public getLists(): Observable<any> {
-        return this.http.get<any>(`/lists`);
+    public getLists(): Observable<Array<List>> {
+        return this.http.get<Array<List>>(`/lists`);
     }
 
     public getListById(listId: number): Observable<any> {
         return this.http.get<any>(`/lists/${listId}`);
     }
 
-    public removeListById(listId: number): Observable<any> {
+    public removeListById(listId: string): Observable<any> {
         return this.http.delete<any>(`/lists/${listId}`);
     }
 
-    public updateListById(listId: number, list: List): Observable<any> {
+    public updateListById(listId: string, list: List): Observable<any> {
         return this.http.put<any>(`/lists/${listId}`, list);
     }
 }

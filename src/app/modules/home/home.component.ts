@@ -1,4 +1,4 @@
-import { Component, Host, OnInit, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { AppService } from '../../services/app.service';
 export class HomeComponent implements OnInit {
     public tasks: Array<any> = [];
 
-    constructor(@Host() @Optional() private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) {}
 
     ngOnInit(): void {
         this.getTasks();
