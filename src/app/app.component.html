@@ -1,11 +1,25 @@
 <div class="h-screen flex justify-center item-center">
-    <mat-card class="my-auto">
-        <mat-card-header class="text-center">
+    <mat-card class="my-auto w-3/4 h-3/4 mat-elevation-z8">
+        <mat-card-header class="text-center flex justify-center border-b-2 mb-2">
             <mat-card-title>ToDo Application</mat-card-title>
             <mat-card-subtitle>Dog Breed</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <router-outlet></router-outlet>
         </mat-card-content>
+        <mat-card-footer>
+            <mat-toolbar color="primary" class="flex justify-between items-center">
+                <h1>
+                    Designed and Developed by
+                    <a href="https://hmousavi.dev/" target="_blank">Hossein Mousavi</a>
+                </h1>
+
+                <footer>
+                    <a href="https://github.com/hossein13m/to-do-list" target="_blank" matTooltip="GitHub">
+                        <img src="../assets/images/github.png" alt="GitHub" />
+                    </a>
+                </footer>
+            </mat-toolbar>
+        </mat-card-footer>
     </mat-card>
 </div>
