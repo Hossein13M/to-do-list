@@ -1,5 +1,6 @@
-import { Component, Host, OnInit, Optional } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../../services/app.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-done-task',
@@ -9,7 +10,7 @@ import { AppService } from '../../services/app.service';
 export class DoneTaskComponent implements OnInit {
     public completedTasks: Array<any> = [];
 
-    constructor(@Host() @Optional() private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService, private readonly notificationService: NotificationService) {}
 
     ngOnInit(): void {
         this.getCompletedTasksList();
@@ -17,5 +18,13 @@ export class DoneTaskComponent implements OnInit {
 
     public getCompletedTasksList(): void {
         this.appService.getAllCompletedTasks().subscribe((response) => (this.completedTasks = response));
+    }
+
+    public removeTask(taskId: string): void {
+        this.appService.removeTaskById(taskId).subscribe(
+            () => this.getCompletedTasksList(),
+            () => this.notificationService.onError('Something went wrong!'),
+            () => this.notificationService.onError('The Task Removed!')
+        );
     }
 }
