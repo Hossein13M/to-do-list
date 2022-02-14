@@ -9,8 +9,3 @@ export interface Task {
     _id: string;
     __v: string;
 }
-
-export interface TaskList {
-    type: object;
-    ref: 'List';
-}
