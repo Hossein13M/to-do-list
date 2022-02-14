@@ -36,8 +36,8 @@ export class AppService {
         return this.http.get<any>(`/compeleted`);
     }
 
-    public getMainList(): Observable<any> {
-        return this.http.get<any>(`/mainList`);
+    public getMainList(): Observable<List> {
+        return this.http.get<List>(`/mainList`);
     }
 
     public getLists(): Observable<Array<List>> {
@@ -58,5 +58,13 @@ export class AppService {
 
     public createList(listName: string): Observable<any> {
         return this.http.post<any>(`/lists/`, { title: listName });
+    }
+
+    public completeTask(taskId: string, task: any): Observable<any> {
+        return this.http.put<any>(`/tasks/${taskId}`, task);
+    }
+
+    public transferTaskToMainList(taskId: string, task: any): Observable<any> {
+        return this.http.put<any>(`/tasks/${taskId}`, task);
     }
 }
