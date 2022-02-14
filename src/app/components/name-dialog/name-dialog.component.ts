@@ -39,28 +39,34 @@ export class NameDialogComponent implements OnInit {
     }
 
     public submitForm(): void {
-        this.data.type === 'task' ? this.updateTaskName() : this.updateListName();
+        if (this.isEditMode) {
+            this.data.type === 'task' ? this.updateTaskName() : this.updateListName();
+        } else {
+            this.data.type === 'task' ? this.updateTaskName() : this.addNewList();
+        }
     }
 
     private updateListName(): void {
         this.appService.updateListById((this.data.info as List)._id, this.data.info as List).subscribe(
-            () => {
-                this.notificationService.onSuccess('Changed!');
-                this.dialogRef.close(true);
-            },
-            () => {
-                this.notificationService.onError('Something came wrong!');
-            }
+            () => this.notificationService.onSuccess('Changed!'),
+            () => this.notificationService.onError('Something came wrong!'),
+            () => this.dialogRef.close(true)
         );
     }
 
     private updateTaskName(): void {
         this.appService.updateTaskById((this.data.info as Task)._id, this.data.info as Task).subscribe(
-            () => {
-                this.notificationService.onSuccess('Changed!');
-                this.dialogRef.close(true);
-            },
-            () => this.notificationService.onError('Something came wrong!')
+            () => this.notificationService.onSuccess('Changed!'),
+            () => this.notificationService.onError('Something came wrong!'),
+            () => this.dialogRef.close(true)
+        );
+    }
+
+    private addNewList(): void {
+        this.appService.createList(this.form.get('name')!.value).subscribe(
+            () => this.notificationService.onSuccess('List Has Been Added!'),
+            () => this.notificationService.onError('Something came wrong!'),
+            () => this.dialogRef.close(true)
         );
     }
 
