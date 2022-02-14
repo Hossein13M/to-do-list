@@ -14,6 +14,7 @@ import { List } from '../../models/list.model';
 })
 export class ListItemComponent implements OnInit {
     public listId!: string;
+    public mainListId!: string;
     public tasks: Array<Task> = [];
     public listInfo!: List;
     public hasGotData: boolean = false;
@@ -26,6 +27,7 @@ export class ListItemComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.getMainListId();
         this.getCurrentListIsFromURL();
         this.getTaskOfCurrentList();
         this.getListInfoById();
@@ -33,6 +35,10 @@ export class ListItemComponent implements OnInit {
 
     private getCurrentListIsFromURL(): void {
         this.listId = this.activatedRoute.snapshot.paramMap.get('id')!;
+    }
+
+    private getMainListId(): void {
+        this.appService.getMainList().subscribe((response) => (this.mainListId = response._id));
     }
 
     private getTaskOfCurrentList(): void {
@@ -65,6 +71,24 @@ export class ListItemComponent implements OnInit {
     }
 
     public completeTask(task: Task): void {
-        console.log(task);
+        const taskInfo = {
+            title: task.title,
+            description: '',
+            done: true,
+            list: task.list._id,
+        };
+
+        this.appService.completeTask(task._id, taskInfo).subscribe(() => this.getTaskOfCurrentList());
+    }
+
+    public transferTaskToMainList(task: Task): void {
+        const taskInfo = {
+            title: task.title,
+            description: '',
+            done: true,
+            list: this.mainListId,
+        };
+
+        this.appService.transferTaskToMainList(task._id, taskInfo).subscribe(() => this.getTaskOfCurrentList());
     }
 }
