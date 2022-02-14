@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../../services/app.service';
 
 @Component({
     selector: 'app-home',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    constructor() {}
+    public tasks: Array<any> = [];
 
-    ngOnInit(): void {}
+    constructor(private readonly appService: AppService) {}
+
+    ngOnInit(): void {
+        this.getTasks();
+    }
+
+    public getTasks(): void {
+        this.appService.getTasks().subscribe((response) => (this.tasks = response));
+    }
 }

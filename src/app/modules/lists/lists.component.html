@@ -1,1 +1,28 @@
-<p>lists works!</p>
+<div class="flex flex-col mt-5">
+    <header class="flex justify-around items-center border-b-2 pb-5">
+        <span class="text-2xl">Lists</span>
+        <button mat-icon-button color="accent" matTooltip="Add New List" (click)="openListDialog()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </header>
+
+    <div class="mt-2 flex flex-col items-baseline">
+        <div *ngFor="let list of lists" class="flex justify-between w-full border-b-2">
+            <h1>{{ list.title }}</h1>
+
+            <div class="">
+                <button mat-icon-button color="primary" matTooltip="Edit List" (click)="openListDialog(list)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" matTooltip="Delete List" (click)="removeList(list._id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" matTooltip="Tasks" (click)="navigateToSpecificListTasks(list)">
+                    <mat-icon>splitscreen</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

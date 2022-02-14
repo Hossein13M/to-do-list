@@ -1,0 +1,14 @@
+<h1>{{ isEditMode ? 'Update' : 'Set' }} Name For Your {{ data.type === 'list' ? 'List' : 'Task' }}</h1>
+
+<form [formGroup]="form" (submit)="submitForm()" class="flex flex-col">
+    <mat-form-field appearance="outline">
+        <mat-label>Please {{ isEditMode ? 'Edit' : 'Enter' }} Your {{ data.type === 'list' ? 'List' : 'Task' }} name</mat-label>
+        <input formControlName="name" type="text" matInput />
+        <mat-hint align="end">You can change its name later!</mat-hint>
+    </mat-form-field>
+
+    <div>
+        <button mat-stroked-button color="primary" type="submit">Save Changes</button>
+        <button mat-stroked-button color="warn" type="button" (click)="closeDialog()">Discard Changes</button>
+    </div>
+</form>
