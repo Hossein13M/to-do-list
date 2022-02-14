@@ -22,7 +22,6 @@ export class ListsComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.notificationService.onSuccess('hello');
         this.getLists();
     }
 
