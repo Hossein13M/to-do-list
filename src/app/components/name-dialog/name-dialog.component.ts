@@ -47,7 +47,7 @@ export class NameDialogComponent implements OnInit {
     }
 
     private updateListName(): void {
-        this.appService.updateListById((this.data.info as List)._id, this.data.info as List).subscribe(
+        this.appService.updateListById((this.data.info as List)._id, (this.data.info as List).title).subscribe(
             () => this.notificationService.onSuccess('Changed!'),
             () => this.notificationService.onError('Something came wrong!'),
             () => this.dialogRef.close(true)
@@ -55,7 +55,7 @@ export class NameDialogComponent implements OnInit {
     }
 
     private updateTaskName(): void {
-        this.appService.updateTaskById((this.data.info as Task)._id, this.data.info as Task).subscribe(
+        this.appService.updateTaskById((this.data.info as Task)._id, (this.data.info as Task).title).subscribe(
             () => this.notificationService.onSuccess('Changed!'),
             () => this.notificationService.onError('Something came wrong!'),
             () => this.dialogRef.close(true)

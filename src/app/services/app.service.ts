@@ -28,8 +28,8 @@ export class AppService {
         return this.http.delete<any>(`/tasks/${taskId}`);
     }
 
-    public updateTaskById(taskId: string, task: Task): Observable<any> {
-        return this.http.put<any>(`/tasks/${taskId}`, task);
+    public updateTaskById(taskId: string, taskName: string): Observable<any> {
+        return this.http.put<any>(`/tasks/${taskId}`, { title: taskName });
     }
 
     public getAllCompletedTasks(): Observable<any> {
@@ -53,8 +53,8 @@ export class AppService {
         return this.http.delete<any>(`/lists/${listId}`);
     }
 
-    public updateListById(listId: string, list: List): Observable<any> {
-        return this.http.put<any>(`/lists/${listId}`, list);
+    public updateListById(listId: string, listName: string): Observable<any> {
+        return this.http.put<any>(`/lists/${listId}`, { title: listName });
     }
 
     public createList(listName: string): Observable<any> {
