@@ -7,8 +7,9 @@
     </header>
 
     <div class="mt-2 flex flex-col items-baseline">
-        <div *ngFor="let task of tasks" class="flex justify-between w-full border-b-2">
-            <h1>{{ task.title }}</h1>
+        <div *ngFor="let task of tasks" class="flex justify-between items-center w-full border-b-2">
+            <h1 class="mb-0">{{ task.title }}</h1>
+            <span>{{ task.done ? '(Task has been done!)' : '' }}</span>
 
             <div class="">
                 <button mat-icon-button color="primary" matTooltip="Edit List" (click)="openListDialog(task)">
