@@ -30,12 +30,16 @@ export class ListsComponent implements OnInit {
     }
 
     public removeList(listId: string): void {
-        this.appService.removeListById(listId).subscribe(() => this.notificationService.onError('The List Removed!'));
+        this.appService.removeListById(listId).subscribe(
+            () => this.getLists(),
+            () => this.notificationService.onError('Something went wrong!'),
+            () => this.notificationService.onError('The List Removed!')
+        );
     }
 
     public openListDialog(list?: List): void {
         this.matDialog
-            .open(NameDialogComponent, { data: { name: list ? list.title : null, type: 'list' } })
+            .open(NameDialogComponent, { data: { info: list ? list : null, type: 'list' } })
             .afterClosed()
             .subscribe((result: boolean) => result && this.getLists());
     }
