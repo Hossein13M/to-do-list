@@ -1,1 +1,28 @@
-<p>list-item works!</p>
+<div class="flex flex-col mt-5">
+    <header class="flex justify-around items-center border-b-2 pb-5">
+        <span class="text-2xl" *ngIf="hasGotData">Tasks of {{ listInfo.title }}</span>
+        <button mat-icon-button color="accent" matTooltip="Add New List" (click)="openListDialog()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </header>
+
+    <div class="mt-2 flex flex-col items-baseline">
+        <div *ngFor="let task of tasks" class="flex justify-between w-full border-b-2">
+            <h1>{{ task.title }}</h1>
+
+            <div class="">
+                <button mat-icon-button color="primary" matTooltip="Edit List" (click)="openListDialog(task)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" matTooltip="Delete List" (click)="removeTask(task._id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+                <button mat-icon-button color="accent" matTooltip="Tasks" (click)="completeTask(task)">
+                    <mat-icon>splitscreen</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

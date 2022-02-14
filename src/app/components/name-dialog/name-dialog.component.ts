@@ -20,7 +20,7 @@ export class NameDialogComponent implements OnInit {
     constructor(
         private readonly fb: FormBuilder,
         public dialogRef: MatDialogRef<NameDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: { type: 'list' | 'task'; info: List | Task },
+        @Inject(MAT_DIALOG_DATA) public data: { type: 'list' | 'task'; info: List | Task; listInfo?: List },
         private readonly appService: AppService,
         private readonly notificationService: NotificationService
     ) {}
@@ -42,7 +42,7 @@ export class NameDialogComponent implements OnInit {
         if (this.isEditMode) {
             this.data.type === 'task' ? this.updateTaskName() : this.updateListName();
         } else {
-            this.data.type === 'task' ? this.updateTaskName() : this.addNewList();
+            this.data.type === 'task' ? this.addNewTask() : this.addNewList();
         }
     }
 
@@ -64,6 +64,15 @@ export class NameDialogComponent implements OnInit {
 
     private addNewList(): void {
         this.appService.createList(this.form.get('name')!.value).subscribe(
+            () => this.notificationService.onSuccess('List Has Been Added!'),
+            () => this.notificationService.onError('Something came wrong!'),
+            () => this.dialogRef.close(true)
+        );
+    }
+
+    private addNewTask(): void {
+        const taskInfo = { title: this.form.get('name')!.value, list: this.data.listInfo! };
+        this.appService.addTask(taskInfo).subscribe(
             () => this.notificationService.onSuccess('List Has Been Added!'),
             () => this.notificationService.onError('Something came wrong!'),
             () => this.dialogRef.close(true)
